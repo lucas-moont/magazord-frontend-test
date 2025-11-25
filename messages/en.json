@@ -27,5 +27,9 @@
     },
     "loading": "Loading...",
     "error": "Error loading data. Please try again."
+  },
+  "header": {
+    "github": "GitHub",
+    "profile": "Profile"
   }
 }
