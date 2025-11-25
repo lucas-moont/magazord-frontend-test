@@ -1,0 +1,31 @@
+{
+  "profile": {
+    "title": "Perfil GitHub",
+    "tabs": {
+      "repositories": "Repositórios",
+      "starred": "Favoritos"
+    },
+    "filters": {
+      "type": "Tipo",
+      "language": "Linguagem",
+      "all": "Todos"
+    },
+    "search": {
+      "placeholder": "Buscar repositórios...",
+      "noResults": "Nenhum repositório encontrado"
+    },
+    "repository": {
+      "stars": "estrelas",
+      "forks": "forks",
+      "watchers": "observadores",
+      "openIssues": "issues abertas",
+      "createdAt": "Criado em",
+      "updatedAt": "Atualizado em",
+      "defaultBranch": "Branch padrão",
+      "topics": "Tópicos",
+      "viewOnGitHub": "Ver no GitHub"
+    },
+    "loading": "Carregando...",
+    "error": "Erro ao carregar dados. Tente novamente."
+  }
+}
