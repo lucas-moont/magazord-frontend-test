@@ -1,5 +1,5 @@
 import type { AxiosInstance } from 'axios';
-import type { Repository, SearchRepositoryFilters } from '@/domain/github/types';
+import type { Repository, SearchRepositoryFilters } from '@/@types/github';
 import { GitHubMapper } from '@/mappers/github.mapper';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';

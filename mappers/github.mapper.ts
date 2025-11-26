@@ -1,4 +1,4 @@
-import type { User, Repository } from '@/domain/github/types';
+import type { User, Repository } from '@/@types/github';
 import type { GitHubUserDTO, GitHubRepositoryDTO } from '@/interfaces/github';
 
 export class GitHubMapper {
