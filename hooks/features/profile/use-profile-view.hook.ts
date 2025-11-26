@@ -3,21 +3,17 @@ import { useProfileViewStore } from '@/lib/stores/features/profile/profile-view.
 export function useProfileView() {
   const activeTab = useProfileViewStore((state) => state.activeTab);
   const searchQuery = useProfileViewStore((state) => state.searchQuery);
-  const selectedRepositoryId = useProfileViewStore(
-    (state) => state.selectedRepositoryId
-  );
+  const currentPage = useProfileViewStore((state) => state.currentPage);
   const setActiveTab = useProfileViewStore((state) => state.setActiveTab);
   const setSearchQuery = useProfileViewStore((state) => state.setSearchQuery);
-  const setSelectedRepositoryId = useProfileViewStore(
-    (state) => state.setSelectedRepositoryId
-  );
+  const setCurrentPage = useProfileViewStore((state) => state.setCurrentPage);
 
   return {
     activeTab,
     searchQuery,
-    selectedRepositoryId,
+    currentPage,
     setActiveTab,
     setSearchQuery,
-    setSelectedRepositoryId,
+    setCurrentPage,
   };
 }
