@@ -1,19 +1,21 @@
 import { create } from 'zustand';
 
+import { RepositoryFilters } from '@/@types/github';
+
 interface RepositoryFiltersState {
-  type: 'all' | 'owner' | 'member' | 'public' | 'private';
+  type: RepositoryFilters['type'];
   language: string | null;
-  setType: (type: 'all' | 'owner' | 'member' | 'public' | 'private') => void;
+  setType: (type: RepositoryFilters['type']) => void;
   setLanguage: (language: string | null) => void;
   resetFilters: () => void;
 }
 
 export const useRepositoryFiltersStore = create<RepositoryFiltersState>(
   (set) => ({
-    type: 'all',
+    type: ['all'],
     language: null,
     setType: (type) => set({ type }),
     setLanguage: (language) => set({ language }),
-    resetFilters: () => set({ type: 'all', language: null }),
+    resetFilters: () => set({ type: ['all'], language: null }),
   })
 );

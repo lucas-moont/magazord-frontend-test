@@ -40,6 +40,7 @@ export class GitHubMapper {
       isPrivate: dto.private || false,
       isFork: dto.fork || false,
       isArchived: dto.archived || false,
+      mirrorUrl: dto.mirror_url || null,
     };
   }
 

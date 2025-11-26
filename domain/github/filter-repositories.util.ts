@@ -7,21 +7,23 @@ export function filterRepositories(
   let filteredRepos = [...repositories];
 
   // Apply custom type filters
-  if (filters.type) {
-    switch (filters.type) {
-      case 'sources':
-        filteredRepos = filteredRepos.filter((repo) => !repo.isFork);
-        break;
-      case 'forks':
-        filteredRepos = filteredRepos.filter((repo) => repo.isFork);
-        break;
-      case 'archived':
-        filteredRepos = filteredRepos.filter((repo) => repo.isArchived);
-        break;
-      case 'mirrors':
-        filteredRepos = filteredRepos.filter((repo) => !!repo.mirrorUrl);
-        break;
-    }
+  if (filters.type && filters.type.length > 0 && !filters.type.includes('all')) {
+    filteredRepos = filteredRepos.filter((repo) => {
+      return filters.type!.some((type) => {
+        switch (type) {
+          case 'sources':
+            return !repo.isFork;
+          case 'forks':
+            return repo.isFork;
+          case 'archived':
+            return repo.isArchived;
+          case 'mirrors':
+            return !!repo.mirrorUrl;
+          default:
+            return false;
+        }
+      });
+    });
   }
 
   // Apply language filter
