@@ -20,4 +20,5 @@ export interface Repository {
   isPrivate: boolean;
   isFork: boolean;
   isArchived: boolean;
+  mirrorUrl: string | null;
 }

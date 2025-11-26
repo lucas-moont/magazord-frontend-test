@@ -16,7 +16,6 @@ export interface GitHubRepositoryDTO {
   collaborators_url: string;
   teams_url: string;
   hooks_url: string;
-  issue_events_url: string;
   events_url: string;
   assignees_url: string;
   branches_url: string;

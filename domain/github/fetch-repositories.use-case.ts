@@ -4,6 +4,7 @@ import { GitHubMapper } from '@/mappers/github.mapper';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
+import { filterRepositories } from './filter-repositories.util';
 
 export async function fetchRepositories(
   filters: RepositoryFilters,
@@ -14,25 +15,16 @@ export async function fetchRepositories(
       per_page: 100,
       sort: filters.sort || 'updated',
       direction: filters.direction || 'desc',
+      type: 'all', // Always fetch all, filter client-side
     };
-
-    if (filters.type && filters.type !== 'all') {
-      params.type = filters.type;
-    }
 
     const response = await httpClient.get(`/users/${GITHUB_USERNAME}/repos`, {
       params,
     });
 
-    let repositories = GitHubMapper.toRepositories(response.data);
+    const repositories = GitHubMapper.toRepositories(response.data);
 
-    if (filters.language) {
-      repositories = repositories.filter(
-        (repo) => repo.language?.toLowerCase() === filters.language?.toLowerCase()
-      );
-    }
-
-    return repositories;
+    return filterRepositories(repositories, filters);
   } catch (error) {
     Logger.error('Failed to fetch repositories', error);
     throw new DomainError('Failed to fetch repositories', error);
