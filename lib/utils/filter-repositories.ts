@@ -27,10 +27,13 @@ export function filterRepositories(
   }
 
   // Apply language filter
-  if (filters.language) {
-    filteredRepos = filteredRepos.filter(
-      (repo) => repo.language?.toLowerCase() === filters.language?.toLowerCase()
-    );
+  if (filters.language && filters.language.length > 0 && !filters.language.includes('all')) {
+    filteredRepos = filteredRepos.filter((repo) => {
+      if (!repo.language) return false;
+      return filters.language!.some(
+        (lang) => lang.toLowerCase() === repo.language!.toLowerCase()
+      );
+    });
   }
 
   return filteredRepos;

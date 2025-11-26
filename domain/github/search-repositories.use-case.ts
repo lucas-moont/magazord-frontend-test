@@ -4,6 +4,7 @@ import { GitHubMapper } from '@/mappers/github.mapper';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
+import { filterRepositories } from '@/lib/utils/filter-repositories';
 
 export async function searchRepositories(
   filters: SearchRepositoryFilters,
@@ -12,9 +13,8 @@ export async function searchRepositories(
   try {
     const queryParts = [`user:${GITHUB_USERNAME}`, filters.query];
 
-    if (filters.language) {
-      queryParts.push(`language:${filters.language}`);
-    }
+    // We don't add language to queryParts because we filter client-side 
+    // to support multiple languages with OR logic
 
     const params: Record<string, any> = {
       q: queryParts.join(' '),
@@ -31,7 +31,13 @@ export async function searchRepositories(
 
     const response = await httpClient.get('/search/repositories', { params });
 
-    return GitHubMapper.toRepositories(response.data.items || []);
+    const repositories = GitHubMapper.toRepositories(response.data.items || []);
+
+    // Filter client-side to support multiple languages (OR logic)
+    return filterRepositories(repositories, {
+      language: filters.language,
+      type: [],
+    });
   } catch (error) {
     Logger.error('Failed to search repositories', error);
     throw new DomainError('Failed to search repositories', error);

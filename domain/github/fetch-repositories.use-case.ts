@@ -4,7 +4,7 @@ import { GitHubMapper } from '@/mappers/github.mapper';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
-import { filterRepositories } from './filter-repositories.util';
+import { filterRepositories } from '@/lib/utils/filter-repositories';
 
 export async function fetchRepositories(
   filters: RepositoryFilters,

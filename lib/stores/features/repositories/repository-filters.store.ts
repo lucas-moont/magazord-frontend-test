@@ -4,18 +4,18 @@ import { RepositoryFilters } from '@/@types/github';
 
 interface RepositoryFiltersState {
   type: RepositoryFilters['type'];
-  language: string | null;
+  language: string[];
   setType: (type: RepositoryFilters['type']) => void;
-  setLanguage: (language: string | null) => void;
+  setLanguage: (language: string[]) => void;
   resetFilters: () => void;
 }
 
 export const useRepositoryFiltersStore = create<RepositoryFiltersState>(
   (set) => ({
     type: ['all'],
-    language: null,
+    language: ['all'],
     setType: (type) => set({ type }),
     setLanguage: (language) => set({ language }),
-    resetFilters: () => set({ type: ['all'], language: null }),
+    resetFilters: () => set({ type: ['all'], language: ['all'] }),
   })
 );
