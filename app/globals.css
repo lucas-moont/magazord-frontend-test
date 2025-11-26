@@ -4,6 +4,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --gray-950: #24292e;
+  --gray-c5: #DBDBDB;      /* grey-derivatives-C_5, using same name as figma */
+  --gray-bg: #F8F8F8;      /* grey-derivatives-BG, using same name as figma */
 }
 
 @theme inline {
@@ -11,6 +13,8 @@
   --color-foreground: var(--foreground);
   --color-gray-950: var(--gray-950);
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+  --color-gray-c5: var(--gray-c5);
+  --color-gray-bg: var(--gray-bg);
 }
 
 @media (prefers-color-scheme: dark) {
