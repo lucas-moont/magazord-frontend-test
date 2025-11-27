@@ -4,6 +4,8 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { QueryProvider } from '@/lib/providers/query-provider';
 import { ThemeProvider } from 'next-themes';
+import { Header } from '@/components/shared/Header';
+import { ThemeSwitch } from '@/components/shared/Header/Theme-Switch';
 import "../globals.css";
 
 const roboto = Roboto({
@@ -39,7 +41,11 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <QueryProvider>{children}</QueryProvider>
+            <QueryProvider>
+              <Header />
+              {children}
+              <ThemeSwitch floating={true} />
+            </QueryProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

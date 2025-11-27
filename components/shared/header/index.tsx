@@ -9,7 +9,7 @@ export function Header() {
   const t = useTranslations('header');
 
   return (
-    <header className="bg-[hsl(210,11%,15%)] border-b border-transparent">
+    <header className="bg-[hsl(210,11%,15%)] border-b border-transparent hidden md:block">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-6">
           <div className="flex items-center gap-4">
@@ -28,7 +28,7 @@ export function Header() {
             <span className="text-white">{t('profile')}</span>
           </div>
 
-          <ThemeSwitch />
+          <ThemeSwitch floating={false} />
         </div>
       </div>
     </header>

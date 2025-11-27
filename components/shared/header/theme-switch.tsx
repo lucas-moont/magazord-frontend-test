@@ -6,7 +6,12 @@ import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
 
-export function ThemeSwitch() {
+interface ThemeSwitchProps {
+  floating?: boolean;
+  className?: string;
+}
+
+export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -18,7 +23,11 @@ export function ThemeSwitch() {
 
   if (!mounted) {
     return (
-      <div className="w-16 h-8 bg-gray-300 rounded-full relative">
+      <div className={cn(
+        "w-16 h-8 bg-gray-300 rounded-full relative",
+        floating && "fixed bottom-4 right-4 z-50 md:hidden shadow-lg",
+        className
+      )}>
         <div className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full" />
       </div>
     );
@@ -31,7 +40,9 @@ export function ThemeSwitch() {
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
         'relative w-16 h-8 rounded-full transition-colors duration-300 ease-in-out',
-        isDark ? 'bg-gray-800' : 'bg-gray-300'
+        floating && 'fixed bottom-4 right-4 z-50 md:hidden shadow-lg',
+        isDark ? 'bg-gray-800' : 'bg-gray-300',
+        className
       )}
       aria-label="Toggle theme"
     >

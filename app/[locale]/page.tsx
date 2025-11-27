@@ -10,7 +10,6 @@ import { UserProfile } from '@/components/shared/User-Profile';
 import { ProfileTabs } from '@/components/shared/Profile-Tabs';
 import { RepositoryToolbar } from '@/components/shared/Repository-Toolbar';
 import { RepositoryList } from '@/components/shared/Repository-List';
-import { Header } from '@/components/shared/Header';
 import { useTranslations } from 'next-intl';
 import { filterRepositories } from '@/lib/utils/filter-repositories';
 import { Pagination } from '@/components/shared/Pagination';
@@ -90,30 +89,22 @@ export default function ProfilePage() {
 
   if (isLoadingUser) {
     return (
-      <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="text-lg text-gray-600">{t('loading')}</div>
-        </div>
-      </>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-lg text-gray-600">{t('loading')}</div>
+      </div>
     );
   }
 
   if (!user) {
     return (
-      <>
-        <Header />
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="text-lg text-red-600">{t('error')}</div>
-        </div>
-      </>
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-lg text-red-600">{t('error')}</div>
+      </div>
     );
   }
 
   return (
-    <>
-      <Header />
-      <div className="min-h-screen bg-white dark:bg-background">
+    <div className="min-h-screen bg-white dark:bg-background pb-16 md:pb-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           <div className="grid grid-cols-1 md:grid-cols-7 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
             <aside className="md:col-span-2 lg:col-span-1">
@@ -173,6 +164,5 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-    </>
   );
 }
