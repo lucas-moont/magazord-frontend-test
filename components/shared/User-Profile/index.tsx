@@ -1,20 +1,13 @@
-'use client';
-
-import { useState } from 'react';
 import { User } from '@/@types/github';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
-import { useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils/cn';
+import { AdditionalInfo } from '@/components/shared/Additional-Info';
 
 interface UserProfileProps {
   user: User;
 }
 
 export function UserProfile({ user }: UserProfileProps) {
-  const t = useTranslations('profile');
-  const [isAdditionalInfoOpen, setIsAdditionalInfoOpen] = useState(false);
-
   const hasAdditionalInfo = user.company || user.location || user.blog;
 
   return (
@@ -44,70 +37,48 @@ export function UserProfile({ user }: UserProfileProps) {
       )}
 
       {hasAdditionalInfo && (
-        <>
-          <button
-            onClick={() => setIsAdditionalInfoOpen(!isAdditionalInfoOpen)}
-            className="md:hidden flex flex-col items-center gap-0.5 text-link-color mb-4"
-          >
-            <span className="text-sm">{t('additionalInfo')}</span>
-            <Icon
-              icon="mdi:chevron-down"
-              className={cn(
-                "w-6 h-6 transition-transform duration-200",
-                isAdditionalInfoOpen && "rotate-180"
-              )}
-            />
-          </button>
-
-          <div
-            className={cn(
-              "flex flex-col gap-2 items-start w-full max-w-xs text-sm",
-              !isAdditionalInfoOpen ? "hidden md:flex" : "md:flex rounded-lg p-4 md:rounded-none md:p-0 md:bg-transparent"
-            )}
-            style={isAdditionalInfoOpen ? { backgroundColor: 'var(--additional-info-bg)' } : undefined}
-          >
-            {user.company && (
-              <a
-                href={`https://github.com/${user.company.replace('@', '')}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-link-color hover:underline text-sm"
-              >
-                <Icon icon="lucide:building-2" className="w-4 h-4 text-link-color" />
-                <span>{user.company}</span>
-              </a>
-            )}
-
-            {user.location && (
-              <div className="flex items-center gap-2 text-gray-c3 dark:text-muted-foreground text-sm">
-                <Icon icon="lucide:map-pin" className="w-4 h-4" />
-                <span>{user.location}</span>
-              </div>
-            )}
-
-            {user.blog && (
-              <a
-                href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-link-color hover:underline text-sm"
-              >
-                <Icon icon="lucide:link" className="w-4 h-4 text-link-color" />
-                <span>{user.blog}</span>
-              </a>
-            )}
-
+        <AdditionalInfo>
+          {user.company && (
             <a
-              href={`https://github.com/${user.login}`}
+              href={`https://github.com/${user.company.replace('@', '')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-link-color hover:underline text-sm"
             >
-              <Icon icon="lucide:github" className="w-4 h-4 text-link-color" />
-              <span>{user.login}</span>
+              <Icon icon="lucide:building-2" className="w-4 h-4 text-link-color" />
+              <span>{user.company}</span>
             </a>
-          </div>
-        </>
+          )}
+
+          {user.location && (
+            <div className="flex items-center gap-2 text-gray-c3 dark:text-muted-foreground text-sm">
+              <Icon icon="lucide:map-pin" className="w-4 h-4" />
+              <span>{user.location}</span>
+            </div>
+          )}
+
+          {user.blog && (
+            <a
+              href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-link-color hover:underline text-sm"
+            >
+              <Icon icon="lucide:link" className="w-4 h-4 text-link-color" />
+              <span>{user.blog}</span>
+            </a>
+          )}
+
+          <a
+            href={`https://github.com/${user.login}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-link-color hover:underline text-sm"
+          >
+            <Icon icon="lucide:github" className="w-4 h-4 text-link-color" />
+            <span>{user.login}</span>
+          </a>
+        </AdditionalInfo>
       )}
     </div>
   );
