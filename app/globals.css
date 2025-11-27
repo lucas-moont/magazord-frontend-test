@@ -6,6 +6,7 @@
   --gray-950: #24292e;
   --gray-c5: #DBDBDB;      /* grey-derivatives-C_5, using same name as figma */
   --gray-bg: #F8F8F8;      /* grey-derivatives-BG, using same name as figma */
+  --gray-c3: #989898;      /* grey-derivatives-C_3, using same name as figma */
 }
 
 @theme inline {
@@ -15,6 +16,7 @@
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
   --color-gray-c5: var(--gray-c5);
   --color-gray-bg: var(--gray-bg);
+  --color-gray-c3: var(--gray-c3);
 }
 
 @media (prefers-color-scheme: dark) {
