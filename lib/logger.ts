@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 export const Logger = {
   error: (message: string, error?: unknown) => {
     console.error(`[Error]: ${message}`, error);

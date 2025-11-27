@@ -3,10 +3,10 @@ import { create } from 'zustand';
 type ActiveTab = 'repositories' | 'starred';
 
 interface ProfileViewState {
-  activeTab: 'repositories' | 'starred';
+  activeTab: ActiveTab;
   searchQuery: string;
   currentPage: number;
-  setActiveTab: (tab: 'repositories' | 'starred') => void;
+  setActiveTab: (tab: ActiveTab) => void;
   setSearchQuery: (query: string) => void;
   setCurrentPage: (page: number) => void;
 }
