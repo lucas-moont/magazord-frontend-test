@@ -36,7 +36,11 @@
     --additional-info-bg: #F8F8F8;
     --dropdown-bg: #ffffff;
     --dropdown-border: #e5e7eb;
+    --dropdown-hover: #f3f4f6;
     --close-button-color: #FE354D;
+    --tab-inactive-text: #999999;
+    --tab-inactive-hover-text: #000000;
+    --tab-inactive-hover-border: #d1d5db;
   }
 
   html.dark, .dark {
@@ -74,7 +78,11 @@
     --additional-info-bg: #2d2d2d;
     --dropdown-bg: #1f2937;
     --dropdown-border: #374151;
+    --dropdown-hover: #374151;
     --close-button-color: #FE354D;
+    --tab-inactive-text: #9ca3af;
+    --tab-inactive-hover-text: #d1d5db;
+    --tab-inactive-hover-border: #4b5563;
   }
 
   * {
@@ -116,7 +124,11 @@
   --color-separator: hsl(var(--separator));
   --color-dropdown-bg: var(--dropdown-bg);
   --color-dropdown-border: var(--dropdown-border);
+  --color-dropdown-hover: var(--dropdown-hover);
   --color-additional-info-bg: var(--additional-info-bg);
   --color-close-button: var(--close-button-color);
+  --color-tab-inactive-text: var(--tab-inactive-text);
+  --color-tab-inactive-hover-text: var(--tab-inactive-hover-text);
+  --color-tab-inactive-hover-border: var(--tab-inactive-hover-border);
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
 }

@@ -29,7 +29,7 @@ export function ProfileTabs({ tabs, activeTab, onTabChange, className }: Profile
               "flex items-center gap-2 pb-3 px-1 border-b-2 font-medium text-base transition-colors",
               activeTab === tab.id
                 ? "border-tab-active-border text-gray-900 dark:text-foreground"
-                : "border-transparent text-gray-c3 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"
+                : "border-transparent text-tab-inactive-text hover:text-tab-inactive-hover-text hover:border-tab-inactive-hover-border"
             )}
           >
             <Icon
@@ -37,7 +37,9 @@ export function ProfileTabs({ tabs, activeTab, onTabChange, className }: Profile
               width={24}
               height={24}
               className={cn(
-                activeTab === tab.id ? "text-gray-900 dark:text-foreground" : "text-gray-c3 dark:text-gray-500"
+                activeTab === tab.id 
+                  ? "text-gray-900 dark:text-foreground" 
+                  : "text-tab-inactive-text"
               )}
             />
             <span>{tab.label}</span>
