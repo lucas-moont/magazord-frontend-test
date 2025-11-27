@@ -19,7 +19,7 @@ export function DropdownMenu({
   return (
     <div
       className={cn(
-        "absolute top-full mt-2 w-56 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg overflow-hidden",
+        "absolute top-full mt-2 w-56 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden",
         position === 'right' ? 'right-0' : 'left-0',
         className
       )}
