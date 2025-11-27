@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeSwitch } from './ThemeSwitch';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
@@ -14,7 +15,7 @@ vi.mock('next-themes', () => ({
 // Mock framer-motion
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+    div: ({ children, ...props }: React.ComponentProps<'div'>) => <div {...props}>{children}</div>,
   },
 }));
 

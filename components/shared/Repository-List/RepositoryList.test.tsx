@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { RepositoryList } from './index';
 import { describe, it, expect, vi } from 'vitest';
@@ -10,8 +11,11 @@ vi.mock('next-intl', () => ({
 }));
 
 // Mock next/image
+/* eslint-disable @next/next/no-img-element */
 vi.mock('next/image', () => ({
-  default: (props: any) => <img {...props} alt={props.alt} />,
+  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => (
+    <img src={src} alt={alt} {...props} />
+  ),
 }));
 
 const mockRepository: Repository = {
