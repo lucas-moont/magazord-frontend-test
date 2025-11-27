@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useFetchUser } from '@/hooks/features/github/use-fetch-user.hook';
 import { useFetchRepositories } from '@/hooks/features/github/use-fetch-repositories.hook';
 import { useFetchStarred } from '@/hooks/features/github/use-fetch-starred.hook';
@@ -11,7 +12,12 @@ import { ProfileTabs } from '@/components/shared/Profile-Tabs';
 import { RepositoryToolbar } from '@/components/shared/Repository-Toolbar';
 import { RepositoryList } from '@/components/shared/Repository-List';
 import { useTranslations } from 'next-intl';
+import type { RepositoryFilters } from '@/@types/github';
 import { filterRepositories } from '@/lib/utils/filter-repositories';
+import { extractAvailableLanguages } from '@/lib/utils/extract-available-languages';
+import { calculateRepositoryCounts } from '@/lib/utils/calculate-repository-counts';
+import { getDisplayedRepositories } from '@/lib/utils/get-displayed-repositories';
+import { calculatePagination } from '@/lib/utils/pagination-calculator';
 import { Pagination } from '@/components/shared/Pagination';
 import { ITEMS_PER_PAGE } from '@/consts/pagination';
 
@@ -19,13 +25,18 @@ export default function ProfilePage() {
   const t = useTranslations('profile');
 
   const { activeTab, searchQuery, currentPage, setActiveTab, setSearchQuery, setCurrentPage } = useProfileView();
-  const { type, language, setType, setLanguage } = useRepositoryFilters();
+  const { type, language, setType, setLanguage, resetFilters } = useRepositoryFilters();
+
+  useEffect(() => {
+    resetFilters();
+    setSearchQuery('');
+    setCurrentPage(1);
+  }, [activeTab, resetFilters, setSearchQuery, setCurrentPage]);
 
   const { user, isLoading: isLoadingUser } = useFetchUser();
 
   const { repositories, isLoading: isLoadingRepos } = useFetchRepositories({
     type,
-    // Don't filter by language in the hook so we can calculate available languages from all repos
   });
 
   const { starred, isLoading: isLoadingStarred } = useFetchStarred();
@@ -46,44 +57,52 @@ export default function ProfilePage() {
         : isLoadingRepos
       : isLoadingStarred;
 
-  // Filter repositories by language locally using the utility
-  // We pass empty type array because types are already filtered by the use case
   const filteredRepositories = filterRepositories(repositories || [], {
     language: language || undefined,
     type: [],
   });
 
-  const displayedRepositories =
-    activeTab === 'repositories'
-      ? searchQuery
-        ? searchResults || []
-        : filteredRepositories
-      : starred || [];
+  const filteredStarred = filterRepositories(starred || [], {
+    language: language || undefined,
+    type: type || undefined,
+  });
 
-  // Pagination logic
-  const totalPages = Math.ceil(displayedRepositories.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const displayedRepositories = getDisplayedRepositories({
+    activeTab,
+    searchQuery,
+    searchResults,
+    filteredRepositories,
+    filteredStarred,
+  });
+
+  const { repositoriesCount, starredCount } = calculateRepositoryCounts({
+    activeTab,
+    displayedRepositories,
+    totalRepositories: repositories,
+    totalStarred: starred,
+  });
+
+  const { totalPages, startIndex, endIndex } = calculatePagination(
+    displayedRepositories.length,
+    ITEMS_PER_PAGE,
+    currentPage
+  );
   const paginatedRepositories = displayedRepositories.slice(startIndex, endIndex);
 
-  const availableLanguages = Array.from(
-    new Set(
-      (repositories || [])
-        .map((repo) => repo.language)
-        .filter((lang): lang is string => lang !== null)
-    )
-  ).map((lang) => ({ value: lang, label: lang }));
+  const allReposForLanguages =
+    activeTab === 'repositories' ? repositories || [] : starred || [];
+  const availableLanguages = extractAvailableLanguages(allReposForLanguages);
 
   const tabs = [
     {
       id: 'repositories',
       label: t('tabs.repositories'),
-      count: repositories?.length || 0,
+      count: repositoriesCount,
     },
     {
       id: 'starred',
       label: t('tabs.starred'),
-      count: starred?.length || 0,
+      count: starredCount,
     },
   ];
 
@@ -125,10 +144,12 @@ export default function ProfilePage() {
                 onSearchChange={setSearchQuery}
                 onSearchSubmit={handleSearch}
                 searchPlaceholder={t('search.placeholder')}
-                showFilters={activeTab === 'repositories'}
+                showFilters={true}
                 typeLabel={t('filters.type')}
                 typeFilter={type || ['all']}
-                onTypeFilterChange={(value) => setType(value as any)}
+                onTypeFilterChange={(value) =>
+                  setType(value as RepositoryFilters['type'])
+                }
                 typeOptions={[
                   { value: 'sources', label: 'Sources' },
                   { value: 'forks', label: 'Forks' },

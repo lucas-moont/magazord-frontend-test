@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { searchRepositories } from '@/domain/github';
 import type { Repository, SearchRepositoryFilters } from '@/@types/github';
 import { httpClient } from '@/lib/http';
+import { GitHubMapper } from '@/mappers/github.mapper';
+import { filterRepositories } from '@/lib/utils/filter-repositories';
 
 interface UseSearchRepositoriesOptions {
   enabled?: boolean;
@@ -24,7 +26,14 @@ export function useSearchRepositories(
 
   const query = useQuery<Repository[], Error>({
     queryKey: ['github', 'search', filters],
-    queryFn: () => searchRepositories(filters, httpClient),
+    queryFn: async () => {
+      const dtos = await searchRepositories(filters, httpClient);
+      const repositories = GitHubMapper.toRepositories(dtos);
+      return filterRepositories(repositories, {
+        language: filters.language,
+        type: [],
+      });
+    },
     enabled: enabled && !!filters.query,
     staleTime: Infinity,
   });
