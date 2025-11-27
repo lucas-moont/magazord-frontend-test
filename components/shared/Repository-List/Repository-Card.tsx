@@ -2,15 +2,15 @@
 
 import type { Repository } from '@/@types/github';
 import { Icon } from '@iconify/react';
-import { useLocale } from 'next-intl';
+import { getLanguageColor } from '@/lib/utils/get-language-color';
 
 interface RepositoryCardProps {
   repository: Repository;
 }
 
 export function RepositoryCard({ repository }: RepositoryCardProps) {
-  const locale = useLocale();
   const [owner, repoName] = repository.fullName.split('/');
+  const languageColor = getLanguageColor(repository.language);
 
   return (
     <div>
@@ -36,7 +36,12 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
       <div className="flex flex-wrap items-center gap-8 text-sm text-black dark:text-foreground">
         {repository.language && (
           <div className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-full bg-blue-500"></span>
+            {languageColor && (
+              <span
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: languageColor }}
+              ></span>
+            )}
             <span>{repository.language}</span>
           </div>
         )}
