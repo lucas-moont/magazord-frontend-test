@@ -4,6 +4,8 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchRepositories } from '@/domain/github';
 import type { Repository, RepositoryFilters } from '@/@types/github';
 import { httpClient } from '@/lib/http';
+import { GitHubMapper } from '@/mappers/github.mapper';
+import { filterRepositories } from '@/lib/utils/filter-repositories';
 
 interface UseFetchRepositoriesOptions {
   enabled?: boolean;
@@ -24,7 +26,11 @@ export function useFetchRepositories(
 
   const query = useQuery<Repository[], Error>({
     queryKey: ['github', 'repositories', filters],
-    queryFn: () => fetchRepositories(filters, httpClient),
+    queryFn: async () => {
+      const dtos = await fetchRepositories(filters, httpClient);
+      const repositories = GitHubMapper.toRepositories(dtos);
+      return filterRepositories(repositories, filters);
+    },
     enabled,
     staleTime: Infinity,
   });

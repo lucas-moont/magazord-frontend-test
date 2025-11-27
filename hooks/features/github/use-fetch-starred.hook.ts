@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchStarred } from '@/domain/github';
 import type { Repository } from '@/@types/github';
 import { httpClient } from '@/lib/http';
+import { GitHubMapper } from '@/mappers/github.mapper';
 
 interface UseFetchStarredOptions {
   enabled?: boolean;
@@ -21,7 +22,10 @@ export function useFetchStarred(options?: UseFetchStarredOptions): UseFetchStarr
 
   const query = useQuery<Repository[], Error>({
     queryKey: ['github', 'starred'],
-    queryFn: () => fetchStarred(httpClient),
+    queryFn: async () => {
+      const dtos = await fetchStarred(httpClient);
+      return GitHubMapper.toRepositories(dtos);
+    },
     enabled,
     staleTime: Infinity,
   });

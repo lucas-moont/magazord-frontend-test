@@ -1,30 +1,27 @@
 import type { AxiosInstance } from 'axios';
-import type { Repository, RepositoryFilters } from '@/@types/github';
-import { GitHubMapper } from '@/mappers/github.mapper';
+import type { RepositoryFilters } from '@/@types/github';
+import type { GitHubRepositoryDTO } from '@/interfaces/github';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
-import { filterRepositories } from '@/lib/utils/filter-repositories';
 
 export async function fetchRepositories(
   filters: RepositoryFilters,
   httpClient: AxiosInstance
-): Promise<Repository[]> {
+): Promise<GitHubRepositoryDTO[]> {
   try {
-    const params: Record<string, any> = {
+    const params: Record<string, string | number> = {
       per_page: 100,
       sort: filters.sort || 'updated',
       direction: filters.direction || 'desc',
-      type: 'all', // Always fetch all, filter client-side
+      type: 'all',
     };
 
     const response = await httpClient.get(`/users/${GITHUB_USERNAME}/repos`, {
       params,
     });
 
-    const repositories = GitHubMapper.toRepositories(response.data);
-
-    return filterRepositories(repositories, filters);
+    return response.data;
   } catch (error) {
     Logger.error('Failed to fetch repositories', error);
     throw new DomainError('Failed to fetch repositories', error);

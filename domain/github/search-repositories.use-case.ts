@@ -1,22 +1,18 @@
 import type { AxiosInstance } from 'axios';
-import type { Repository, SearchRepositoryFilters } from '@/@types/github';
-import { GitHubMapper } from '@/mappers/github.mapper';
+import type { SearchRepositoryFilters } from '@/@types/github';
+import type { GitHubRepositoryDTO } from '@/interfaces/github';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
-import { filterRepositories } from '@/lib/utils/filter-repositories';
 
 export async function searchRepositories(
   filters: SearchRepositoryFilters,
   httpClient: AxiosInstance
-): Promise<Repository[]> {
+): Promise<GitHubRepositoryDTO[]> {
   try {
     const queryParts = [`user:${GITHUB_USERNAME}`, filters.query];
 
-    // We don't add language to queryParts because we filter client-side 
-    // to support multiple languages with OR logic
-
-    const params: Record<string, any> = {
+    const params: Record<string, string | number> = {
       q: queryParts.join(' '),
       per_page: 100,
     };
@@ -31,13 +27,7 @@ export async function searchRepositories(
 
     const response = await httpClient.get('/search/repositories', { params });
 
-    const repositories = GitHubMapper.toRepositories(response.data.items || []);
-
-    // Filter client-side to support multiple languages (OR logic)
-    return filterRepositories(repositories, {
-      language: filters.language,
-      type: [],
-    });
+    return response.data.items || [];
   } catch (error) {
     Logger.error('Failed to search repositories', error);
     throw new DomainError('Failed to search repositories', error);

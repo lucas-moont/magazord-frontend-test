@@ -1,13 +1,12 @@
 import type { AxiosInstance } from 'axios';
-import type { Repository } from '@/@types/github';
-import { GitHubMapper } from '@/mappers/github.mapper';
+import type { GitHubRepositoryDTO } from '@/interfaces/github';
 import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
 
 export async function fetchStarred(
   httpClient: AxiosInstance
-): Promise<Repository[]> {
+): Promise<GitHubRepositoryDTO[]> {
   try {
     const response = await httpClient.get(`/users/${GITHUB_USERNAME}/starred`, {
       params: {
@@ -15,7 +14,7 @@ export async function fetchStarred(
       },
     });
 
-    return GitHubMapper.toRepositories(response.data);
+    return response.data;
   } catch (error) {
     Logger.error('Failed to fetch starred repositories', error);
     throw new DomainError('Failed to fetch starred repositories', error);

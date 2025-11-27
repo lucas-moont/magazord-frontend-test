@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchUser } from '@/domain/github';
 import type { User } from '@/@types/github';
 import { httpClient } from '@/lib/http';
+import { GitHubMapper } from '@/mappers/github.mapper';
 
 interface UseFetchUserOptions {
   enabled?: boolean;
@@ -21,7 +22,10 @@ export function useFetchUser(options?: UseFetchUserOptions): UseFetchUserReturn 
 
   const query = useQuery<User, Error>({
     queryKey: ['github', 'user'],
-    queryFn: () => fetchUser(httpClient),
+    queryFn: async () => {
+      const dto = await fetchUser(httpClient);
+      return GitHubMapper.toUser(dto);
+    },
     enabled,
     staleTime: Infinity,
   });
