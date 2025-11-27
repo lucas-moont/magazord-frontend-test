@@ -5,7 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { QueryProvider } from '@/lib/providers/query-provider';
 import { ThemeProvider } from 'next-themes';
 import { Header } from '@/components/shared/Header';
-import { ThemeSwitch } from '@/components/shared/Header/Theme-Switch';
+import { ThemeSwitch } from '@/components/shared/ThemeSwitch';
 import "../globals.css";
 
 const roboto = Roboto({

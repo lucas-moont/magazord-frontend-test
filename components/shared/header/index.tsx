@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { ThemeSwitch } from './Theme-Switch';
+import { ThemeSwitch } from '@/components/shared/ThemeSwitch';
 
 export function Header() {
   const t = useTranslations('header');
