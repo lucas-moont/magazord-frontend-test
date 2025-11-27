@@ -23,17 +23,15 @@ export function SearchBar({
   };
 
   return (
-    <div className="relative">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-c3">
-        <Icon icon="mdi:magnify" width={24} height={24} />
-      </div>
+    <div className="relative flex items-center">
+      <Icon icon="mdi:magnify" width={24} height={24} className="absolute right-0 md:right-auto md:left-0 text-gray-c3" />
       <input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className="w-full pl-10 py-2 bg-transparent text-gray-900 placeholder:text-gray-c3 text-lg border-b border-separator focus:outline-none focus:border-gray-400 transition-colors dark:text-foreground dark:placeholder:text-gray-c3"
+        className="w-full pr-10 md:pr-0 md:pl-10 py-2 bg-transparent text-gray-900 placeholder:text-gray-c3 text-sm md:text-lg border-b border-separator md:border-separator focus:outline-none focus:border-gray-400 transition-colors dark:text-foreground dark:placeholder:text-gray-c3"
       />
     </div>
   );

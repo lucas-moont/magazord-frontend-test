@@ -42,18 +42,15 @@ export function RepositoryToolbar({
   className,
 }: RepositoryToolbarProps) {
   return (
-    <div className={cn("flex flex-col md:flex-col lg:flex-row gap-4 md:gap-6", className)}>
-      <div className="flex-1 w-full lg:order-first">
-        <SearchBar
-          value={searchQuery}
-          onChange={onSearchChange}
-          onSearch={onSearchSubmit}
-          placeholder={searchPlaceholder}
-        />
-      </div>
-
+    <div 
+      className={cn(
+        "flex flex-row md:flex-col lg:flex-row gap-4 md:gap-6",
+        "bg-gray-bg md:bg-transparent rounded-lg p-4 md:p-0",
+        className
+      )}
+    >
       {showFilters && (
-        <div className="flex flex-col sm:flex-row gap-2 md:order-first lg:order-last">
+        <div className="flex flex-row gap-2 md:order-first lg:order-last">
           {typeLabel && onTypeFilterChange && (
             <FilterDropdown
               label={typeLabel}
@@ -73,6 +70,15 @@ export function RepositoryToolbar({
           )}
         </div>
       )}
+
+      <div className="flex-1 w-full lg:order-first">
+        <SearchBar
+          value={searchQuery}
+          onChange={onSearchChange}
+          onSearch={onSearchSubmit}
+          placeholder={searchPlaceholder}
+        />
+      </div>
     </div>
   );
 }

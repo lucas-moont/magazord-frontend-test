@@ -34,6 +34,9 @@
     --tab-active-border: 12 95% 66%;
     --separator: 0 0% 96%;
     --additional-info-bg: #F8F8F8;
+    --dropdown-bg: #ffffff;
+    --dropdown-border: #e5e7eb;
+    --close-button-color: #FE354D;
   }
 
   html.dark, .dark {
@@ -69,6 +72,9 @@
     --tab-active-border: 12 95% 70%;
     --separator: 0 0% 20%;
     --additional-info-bg: #2d2d2d;
+    --dropdown-bg: #1f2937;
+    --dropdown-border: #374151;
+    --close-button-color: #FE354D;
   }
 
   * {
@@ -108,5 +114,9 @@
   --color-link-color: hsl(var(--link-color));
   --color-tab-active-border: hsl(var(--tab-active-border));
   --color-separator: hsl(var(--separator));
+  --color-dropdown-bg: var(--dropdown-bg);
+  --color-dropdown-border: var(--dropdown-border);
+  --color-additional-info-bg: var(--additional-info-bg);
+  --color-close-button: var(--close-button-color);
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
 }

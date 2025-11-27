@@ -75,11 +75,11 @@ export function FilterDropdown({
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/20 z-40"
+          className="fixed inset-0 bg-black/20 z-40 md:block hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
-      <div className="relative z-50" ref={dropdownRef}>
+      <div className={cn("relative", isOpen ? "z-[100]" : "z-10", "md:z-50")} ref={dropdownRef}>
         <Button
           onClick={() => setIsOpen(!isOpen)}
           icon={<ChevronIcon isOpen={isOpen} />}
@@ -87,7 +87,11 @@ export function FilterDropdown({
           {displayLabel}
         </Button>
 
-        <DropdownMenu isOpen={isOpen}>
+        <DropdownMenu 
+          isOpen={isOpen} 
+          title={label}
+          onClose={() => setIsOpen(false)}
+        >
           <DropdownMenuItem
             label="All"
             checked={(value || []).includes('all')}

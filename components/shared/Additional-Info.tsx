@@ -47,15 +47,10 @@ export function AdditionalInfo({
         className={cn(
           "flex flex-col gap-2 items-start w-full max-w-xs text-sm",
           collapsibleOnMobile && !isOpen && "hidden md:flex",
-          collapsibleOnMobile && isOpen && "md:flex rounded-lg p-4 md:rounded-none md:p-0 md:bg-transparent",
+          collapsibleOnMobile && isOpen && "md:flex rounded-lg p-4 md:rounded-none md:p-0 md:bg-transparent bg-additional-info-bg",
           !collapsibleOnMobile && "flex",
           className
         )}
-        style={
-          collapsibleOnMobile && isOpen
-            ? { backgroundColor: 'var(--additional-info-bg)' }
-            : undefined
-        }
       >
         {children}
       </div>
