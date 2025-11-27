@@ -1,6 +1,7 @@
 {
   "profile": {
     "title": "Perfil de GitHub",
+    "additionalInfo": "Información Adicional",
     "tabs": {
       "repositories": "Repositorios",
       "starred": "Favoritos"

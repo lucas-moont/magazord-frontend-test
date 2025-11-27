@@ -26,16 +26,17 @@
     /* Custom grays from Figma */
     --gray-950: 210 11% 15%;
     --gray-c5: 0 0% 86%;
-    --gray-bg: 0 0% 97%;
+    --gray-bg: 0 0% 97.25%;
     --gray-c3: 0 0% 60%;
     
     /* Design System Colors */
     --link-color: 210 100% 51%;
     --tab-active-border: 12 95% 66%;
     --separator: 0 0% 96%;
+    --additional-info-bg: #F8F8F8;
   }
 
-  .dark {
+  html.dark, .dark {
     /* Dark Mode - HSL values without hsl() */
     --background: 0 0% 9%;
     --foreground: 0 0% 98%;
@@ -67,6 +68,7 @@
     --link-color: 210 100% 60%;
     --tab-active-border: 12 95% 70%;
     --separator: 0 0% 20%;
+    --additional-info-bg: #2d2d2d;
   }
 
   * {
