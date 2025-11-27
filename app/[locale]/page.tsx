@@ -6,15 +6,15 @@ import { useFetchStarred } from '@/hooks/features/github/use-fetch-starred.hook'
 import { useSearchRepositories } from '@/hooks/features/github/use-search-repositories.hook';
 import { useProfileView } from '@/hooks/features/profile/use-profile-view.hook';
 import { useRepositoryFilters } from '@/hooks/features/repositories/use-repository-filters.hook';
-import { UserProfile } from '@/components/shared/user-profile';
-import { ProfileTabs } from '@/components/shared/profile-tabs';
-import { RepositoryToolbar } from '@/components/shared/repository-toolbar';
-import { RepositoryList } from '@/components/shared/repository-list';
-import { Header } from '@/components/shared/header';
+import { UserProfile } from '@/components/shared/User-Profile';
+import { ProfileTabs } from '@/components/shared/Profile-Tabs';
+import { RepositoryToolbar } from '@/components/shared/Repository-Toolbar';
+import { RepositoryList } from '@/components/shared/Repository-List';
+import { Header } from '@/components/shared/Header';
 import { useTranslations } from 'next-intl';
 import { filterRepositories } from '@/lib/utils/filter-repositories';
-
-import { Pagination } from '@/components/shared/pagination';
+import { Pagination } from '@/components/shared/Pagination';
+import { ITEMS_PER_PAGE } from '@/consts/pagination';
 
 export default function ProfilePage() {
   const t = useTranslations('profile');
@@ -62,7 +62,6 @@ export default function ProfilePage() {
       : starred || [];
 
   // Pagination logic
-  const ITEMS_PER_PAGE = 10;
   const totalPages = Math.ceil(displayedRepositories.length / ITEMS_PER_PAGE);
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
