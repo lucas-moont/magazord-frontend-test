@@ -14,14 +14,14 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
 
   return (
     <div>
-      <div className="mb-2 text-xl">
-        <span className="font-normal text-black dark:text-foreground">{owner}</span>
-        <span className="text-gray-600 dark:text-muted-foreground mx-1">/</span>
+      <div className="mb-2 text-lg">
+        <span className="font-light text-black dark:text-foreground">{owner}</span>
+        <span className="text-black dark:text-foreground mx-1">/</span>
         <a
           href={repository.htmlUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-blue-600 hover:underline"
+          className="font-semibold text-link-color hover:underline"
         >
           {repoName}
         </a>
@@ -41,12 +41,12 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
           </div>
         )}
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           <Icon icon="ant-design:star-filled" width={20} height={20} />
           <span>{repository.stargazersCount.toLocaleString()}</span>
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-2">
           <Icon icon="fluent:branch-fork-24-regular" width={20} height={20} />
           <span>{repository.forksCount.toLocaleString()}</span>
         </div>

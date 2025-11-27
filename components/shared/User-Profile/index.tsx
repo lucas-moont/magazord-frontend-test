@@ -15,20 +15,20 @@ export function UserProfile({ user }: UserProfileProps) {
           alt={user.name}
           width={150}
           height={150}
-          className="rounded-full"
+          className="w-[104px] h-[104px] md:w-[104px] md:h-[104px] lg:w-[150px] lg:h-[150px] rounded-[50%] object-cover"
           priority
         />
-        <div className="absolute bottom-2 right-2 w-10 h-10 bg-white rounded-full flex items-center justify-center text-lg shadow-md border-4 border-white">
-          😎
+        <div className="absolute bottom-0 right-0 md:bottom-0 md:right-0 lg:bottom-2 lg:right-2 w-[27px] h-[27px] md:w-[27px] md:h-[27px] lg:w-10 lg:h-10 bg-white rounded-full flex items-center justify-center shadow-md border-4 border-white">
+          <span className="text-[12px] md:text-[12px] lg:text-lg">😎</span>
         </div>
       </div>
 
-      <h1 className="text-2xl font-semibold text-gray-900 dark:text-foreground mb-1">
+      <h1 className="text-xl font-bold text-gray-900 dark:text-foreground mb-1">
         {user.name}
       </h1>
 
       {user.bio && (
-        <p className="text-gray-600 dark:text-muted-foreground text-sm mb-6 max-w-xs">
+        <p className="text-gray-c3 dark:text-muted-foreground text-xs sm:text-sm mb-6 max-w-xs text-center">
           {user.bio}
         </p>
       )}
@@ -39,15 +39,15 @@ export function UserProfile({ user }: UserProfileProps) {
             href={`https://github.com/${user.company.replace('@', '')}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-blue-600 hover:underline"
+            className="flex items-center gap-2 text-link-color hover:underline text-sm"
           >
-            <Icon icon="lucide:building-2" className="w-4 h-4" />
+            <Icon icon="lucide:building-2" className="w-4 h-4 text-link-color" />
             <span>{user.company}</span>
           </a>
         )}
 
         {user.location && (
-          <div className="flex items-center gap-2 text-gray-600 dark:text-muted-foreground">
+          <div className="flex items-center gap-2 text-gray-c3 dark:text-muted-foreground text-sm">
             <Icon icon="lucide:map-pin" className="w-4 h-4" />
             <span>{user.location}</span>
           </div>
@@ -58,9 +58,9 @@ export function UserProfile({ user }: UserProfileProps) {
             href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-blue-600 hover:underline"
+            className="flex items-center gap-2 text-link-color hover:underline text-sm"
           >
-            <Icon icon="lucide:link" className="w-4 h-4" />
+            <Icon icon="lucide:link" className="w-4 h-4 text-link-color" />
             <span>{user.blog}</span>
           </a>
         )}
@@ -69,9 +69,9 @@ export function UserProfile({ user }: UserProfileProps) {
           href={`https://github.com/${user.login}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-blue-600 hover:underline"
+          className="flex items-center gap-2 text-link-color hover:underline text-sm"
         >
-          <Icon icon="lucide:github" className="w-4 h-4" />
+          <Icon icon="lucide:github" className="w-4 h-4 text-link-color" />
           <span>{user.login}</span>
         </a>
       </div>

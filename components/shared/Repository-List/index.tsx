@@ -20,12 +20,14 @@ export function RepositoryList({ repositories }: RepositoryListProps) {
   }
 
   return (
-    <div className="space-y-12.5">
-      {repositories.map((repository) => (
-        <RepositoryCard
-          key={repository.id}
-          repository={repository}
-        />
+    <div>
+      {repositories.map((repository, index) => (
+        <div key={repository.id}>
+          <RepositoryCard repository={repository} />
+          {index < repositories.length - 1 && (
+            <div className="h-px bg-separator my-6 sm:my-8" />
+          )}
+        </div>
       ))}
     </div>
   );

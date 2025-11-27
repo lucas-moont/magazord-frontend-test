@@ -113,23 +113,23 @@ export default function ProfilePage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gray-50 dark:bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
-            <aside className="lg:col-span-1">
+      <div className="min-h-screen bg-white dark:bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="grid grid-cols-1 md:grid-cols-7 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+            <aside className="md:col-span-2 lg:col-span-1">
               <UserProfile user={user} />
             </aside>
 
-            <main className="lg:col-span-3">
+            <main className="md:col-span-5 lg:col-span-3">
               <ProfileTabs
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={(tabId) => setActiveTab(tabId as 'repositories' | 'starred')}
-                className="mb-15"
+                className="mb-4 sm:mb-6 md:mb-8"
               />
 
               <RepositoryToolbar
-                className="mb-4"
+                className="mb-4 sm:mb-6 md:mb-8"
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
                 onSearchSubmit={handleSearch}

@@ -42,8 +42,8 @@ export function RepositoryToolbar({
   className,
 }: RepositoryToolbarProps) {
   return (
-    <div className={cn("flex flex-col sm:flex-row gap-10", className)}>
-      <div className="flex-1">
+    <div className={cn("flex flex-col md:flex-col lg:flex-row gap-4 md:gap-6", className)}>
+      <div className="flex-1 w-full lg:order-first">
         <SearchBar
           value={searchQuery}
           onChange={onSearchChange}
@@ -53,7 +53,7 @@ export function RepositoryToolbar({
       </div>
 
       {showFilters && (
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2 md:order-first lg:order-last">
           {typeLabel && onTypeFilterChange && (
             <FilterDropdown
               label={typeLabel}

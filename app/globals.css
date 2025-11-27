@@ -28,6 +28,11 @@
     --gray-c5: 0 0% 86%;
     --gray-bg: 0 0% 97%;
     --gray-c3: 0 0% 60%;
+    
+    /* Design System Colors */
+    --link-color: 210 100% 51%;
+    --tab-active-border: 12 95% 66%;
+    --separator: 0 0% 96%;
   }
 
   .dark {
@@ -57,6 +62,11 @@
     --gray-c5: 0 0% 40%;
     --gray-bg: 0 0% 22%;
     --gray-c3: 0 0% 70%;
+    
+    /* Design System Colors - Dark Mode */
+    --link-color: 210 100% 60%;
+    --tab-active-border: 12 95% 70%;
+    --separator: 0 0% 20%;
   }
 
   * {
@@ -93,5 +103,8 @@
   --color-gray-c5: hsl(var(--gray-c5));
   --color-gray-bg: hsl(var(--gray-bg));
   --color-gray-c3: hsl(var(--gray-c3));
+  --color-link-color: hsl(var(--link-color));
+  --color-tab-active-border: hsl(var(--tab-active-border));
+  --color-separator: hsl(var(--separator));
   --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
 }
