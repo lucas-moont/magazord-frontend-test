@@ -22,17 +22,17 @@ export function UserProfile({ user }: UserProfileProps) {
           😎
         </div>
       </div>
-      
-      <h1 className="text-2xl font-semibold text-gray-900 mb-1">
+
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-foreground mb-1">
         {user.name}
       </h1>
-      
+
       {user.bio && (
-        <p className="text-gray-600 text-sm mb-6 max-w-xs">
+        <p className="text-gray-600 dark:text-muted-foreground text-sm mb-6 max-w-xs">
           {user.bio}
         </p>
       )}
-      
+
       <div className="flex flex-col gap-2 items-start w-full max-w-xs text-sm">
         {user.company && (
           <a
@@ -45,14 +45,14 @@ export function UserProfile({ user }: UserProfileProps) {
             <span>{user.company}</span>
           </a>
         )}
-        
+
         {user.location && (
-          <div className="flex items-center gap-2 text-gray-600">
+          <div className="flex items-center gap-2 text-gray-600 dark:text-muted-foreground">
             <Icon icon="lucide:map-pin" className="w-4 h-4" />
             <span>{user.location}</span>
           </div>
         )}
-        
+
         {user.blog && (
           <a
             href={user.blog.startsWith('http') ? user.blog : `https://${user.blog}`}
@@ -64,7 +64,7 @@ export function UserProfile({ user }: UserProfileProps) {
             <span>{user.blog}</span>
           </a>
         )}
-        
+
         <a
           href={`https://github.com/${user.login}`}
           target="_blank"
