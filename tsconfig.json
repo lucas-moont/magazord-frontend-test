@@ -8,7 +8,7 @@
     "composite": false,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowArbitraryExtensions": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

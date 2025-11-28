@@ -1,0 +1,8 @@
+{
+  "buildCommand": "next build",
+  "env": {
+    "NEXT_TELEMETRY_DISABLED": "1",
+    "NEXT_DISABLE_TURBOPACK": "1"
+  }
+}
+
