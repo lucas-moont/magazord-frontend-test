@@ -19,21 +19,13 @@ interface FilterDropdownProps {
   onChange: (value: string[]) => void;
 }
 
-export function FilterDropdown({
-  label,
-  value = [],
-  options,
-  onChange,
-}: FilterDropdownProps) {
+export function FilterDropdown({ label, value = [], options, onChange }: FilterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     }
@@ -67,36 +59,18 @@ export function FilterDropdown({
     onChange(newValue);
   };
 
-  const displayLabel = (value || []).includes('all')
-    ? label
-    : `${label} (${(value || []).length})`;
+  const displayLabel = (value || []).includes('all') ? label : `${label} (${(value || []).length})`;
 
   return (
     <>
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 z-40 md:block hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-      <div className={cn("relative", isOpen ? "z-[100]" : "z-10", "md:z-50")} ref={dropdownRef}>
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          icon={<ChevronIcon isOpen={isOpen} />}
-        >
+      {isOpen && <div className="fixed inset-0 z-40 hidden bg-black/20 md:block" onClick={() => setIsOpen(false)} />}
+      <div className={cn('relative', isOpen ? 'z-[100]' : 'z-10', 'md:z-50')} ref={dropdownRef}>
+        <Button onClick={() => setIsOpen(!isOpen)} icon={<ChevronIcon isOpen={isOpen} />}>
           {displayLabel}
         </Button>
 
-        <DropdownMenu 
-          isOpen={isOpen} 
-          title={label}
-          onClose={() => setIsOpen(false)}
-        >
-          <DropdownMenuItem
-            label="All"
-            checked={(value || []).includes('all')}
-            onClick={() => handleSelect('all')}
-          />
+        <DropdownMenu isOpen={isOpen} title={label} onClose={() => setIsOpen(false)}>
+          <DropdownMenuItem label="All" checked={(value || []).includes('all')} onClick={() => handleSelect('all')} />
           {options.map((option) => (
             <DropdownMenuItem
               key={option.value}

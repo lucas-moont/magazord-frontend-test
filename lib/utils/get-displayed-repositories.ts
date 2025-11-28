@@ -20,4 +20,3 @@ export function getDisplayedRepositories({
   }
   return filteredStarred;
 }
-

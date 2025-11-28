@@ -11,7 +11,7 @@ export function DropdownMenuItem({ label, checked, onClick }: DropdownMenuItemPr
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-3 w-full px-4 py-3 text-left text-sm text-gray-900 dark:text-foreground hover:bg-dropdown-hover transition-colors"
+      className="dark:text-foreground hover:bg-dropdown-hover flex w-full items-center gap-3 px-4 py-3 text-left text-sm text-gray-900 transition-colors"
     >
       <Checkbox checked={checked} />
       {label}

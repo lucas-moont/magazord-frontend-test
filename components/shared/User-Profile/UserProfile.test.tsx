@@ -7,9 +7,7 @@ import type { User } from '@/@types/github';
 // Mock next/image
 /* eslint-disable @next/next/no-img-element */
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => (
-    <img src={src} alt={alt} {...props} />
-  ),
+  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => <img src={src} alt={alt} {...props} />,
 }));
 
 // Mock AdditionalInfo to avoid next-intl issues
@@ -81,7 +79,7 @@ describe('UserProfile', () => {
       ...mockUser,
       company: '',
       location: '',
-      blog: ''
+      blog: '',
     };
     render(<UserProfile user={minimalUser} />);
     // Should only render the GitHub link, not the AdditionalInfo wrapper

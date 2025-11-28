@@ -29,7 +29,11 @@ describe('Button', () => {
 
   it('renders icon on the left', () => {
     const icon = <span data-testid="icon">Icon</span>;
-    render(<Button icon={icon} iconPosition="left">Button</Button>);
+    render(
+      <Button icon={icon} iconPosition="left">
+        Button
+      </Button>,
+    );
     const button = screen.getByRole('button');
     expect(button).toContainElement(screen.getByTestId('icon'));
     // Check order if possible, or just existence for now

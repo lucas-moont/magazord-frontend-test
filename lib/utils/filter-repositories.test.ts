@@ -104,7 +104,7 @@ describe('filterRepositories', () => {
       // Type: Sources AND Language: Go
       const result = filterRepositories(repos, {
         type: ['sources'],
-        language: ['Go']
+        language: ['Go'],
       });
       expect(result).toHaveLength(1);
       expect(result[0].name).toBe('archived-go');
@@ -114,7 +114,7 @@ describe('filterRepositories', () => {
       // Type: Forks AND Language: TypeScript (fork is JS)
       const result = filterRepositories(repos, {
         type: ['forks'],
-        language: ['TypeScript']
+        language: ['TypeScript'],
       });
       expect(result).toHaveLength(0);
     });

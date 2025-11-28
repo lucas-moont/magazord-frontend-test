@@ -29,19 +29,11 @@ const createRepo = (overrides: Partial<Repository> = {}): Repository => ({
 });
 
 describe('getDisplayedRepositories', () => {
-  const filteredRepos = [
-    createRepo({ id: 1, name: 'repo1' }),
-    createRepo({ id: 2, name: 'repo2' }),
-  ];
+  const filteredRepos = [createRepo({ id: 1, name: 'repo1' }), createRepo({ id: 2, name: 'repo2' })];
 
-  const filteredStarred = [
-    createRepo({ id: 10, name: 'starred1' }),
-    createRepo({ id: 11, name: 'starred2' }),
-  ];
+  const filteredStarred = [createRepo({ id: 10, name: 'starred1' }), createRepo({ id: 11, name: 'starred2' })];
 
-  const searchResults = [
-    createRepo({ id: 100, name: 'search-result' }),
-  ];
+  const searchResults = [createRepo({ id: 100, name: 'search-result' })];
 
   describe('when activeTab is repositories', () => {
     it('should return searchResults when searchQuery is provided', () => {
@@ -135,4 +127,3 @@ describe('getDisplayedRepositories', () => {
     expect(result).toEqual([]);
   });
 });
-

@@ -4,9 +4,7 @@ import { GITHUB_USERNAME } from '@/domain/github/const';
 import { Logger } from '@/lib/logger';
 import { DomainError } from '@/domain/errors';
 
-export async function fetchStarred(
-  httpClient: AxiosInstance
-): Promise<GitHubRepositoryDTO[]> {
+export async function fetchStarred(httpClient: AxiosInstance): Promise<GitHubRepositoryDTO[]> {
   try {
     const response = await httpClient.get(`/users/${GITHUB_USERNAME}/starred`, {
       params: {

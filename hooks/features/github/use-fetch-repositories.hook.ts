@@ -20,7 +20,7 @@ interface UseFetchRepositoriesReturn {
 
 export function useFetchRepositories(
   filters: RepositoryFilters,
-  options?: UseFetchRepositoriesOptions
+  options?: UseFetchRepositoriesOptions,
 ): UseFetchRepositoriesReturn {
   const { enabled = true } = options || {};
 

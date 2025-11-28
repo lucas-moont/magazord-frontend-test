@@ -23,12 +23,14 @@ export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
 
   if (!mounted) {
     return (
-      <div className={cn(
-        "w-16 h-8 bg-gray-300 rounded-full relative",
-        floating && "fixed bottom-4 right-4 z-50 md:hidden shadow-lg",
-        className
-      )}>
-        <div className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full" />
+      <div
+        className={cn(
+          'relative h-8 w-16 rounded-full bg-gray-300',
+          floating && 'fixed right-4 bottom-4 z-50 shadow-lg md:hidden',
+          className,
+        )}
+      >
+        <div className="absolute top-1 left-1 h-6 w-6 rounded-full bg-white" />
       </div>
     );
   }
@@ -39,10 +41,10 @@ export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
     <button
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
-        'relative w-16 h-8 rounded-full transition-colors duration-300 ease-in-out',
-        floating && 'fixed bottom-4 right-4 z-50 md:hidden shadow-lg',
+        'relative h-8 w-16 rounded-full transition-colors duration-300 ease-in-out',
+        floating && 'fixed right-4 bottom-4 z-50 shadow-lg md:hidden',
         isDark ? 'bg-gray-800' : 'bg-gray-300',
-        className
+        className,
       )}
       aria-label="Toggle theme"
     >
@@ -56,7 +58,7 @@ export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
           stiffness: 500,
           damping: 30,
         }}
-        className="absolute top-1 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center"
+        className="absolute top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-md"
       >
         {isDark ? (
           <Icon icon="mdi:moon-waning-crescent" width={14} height={14} className="text-gray-800" />
@@ -70,22 +72,15 @@ export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
           icon="mdi:white-balance-sunny"
           width={14}
           height={14}
-          className={cn(
-            'transition-opacity text-yellow-600',
-            isDark ? 'opacity-0' : 'opacity-50'
-          )}
+          className={cn('text-yellow-600 transition-opacity', isDark ? 'opacity-0' : 'opacity-50')}
         />
         <Icon
           icon="mdi:moon-waning-crescent"
           width={14}
           height={14}
-          className={cn(
-            'transition-opacity text-white',
-            isDark ? 'opacity-50' : 'opacity-0'
-          )}
+          className={cn('text-white transition-opacity', isDark ? 'opacity-50' : 'opacity-0')}
         />
       </div>
     </button>
   );
 }
-

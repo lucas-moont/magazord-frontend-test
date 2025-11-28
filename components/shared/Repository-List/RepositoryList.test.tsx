@@ -13,9 +13,7 @@ vi.mock('next-intl', () => ({
 // Mock next/image
 /* eslint-disable @next/next/no-img-element */
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => (
-    <img src={src} alt={alt} {...props} />
-  ),
+  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => <img src={src} alt={alt} {...props} />,
 }));
 
 const mockRepository: Repository = {
@@ -55,17 +53,13 @@ describe('RepositoryList', () => {
   });
 
   it('renders separators between repositories', () => {
-    const { container } = render(
-      <RepositoryList repositories={[mockRepository, { ...mockRepository, id: 2 }]} />
-    );
+    const { container } = render(<RepositoryList repositories={[mockRepository, { ...mockRepository, id: 2 }]} />);
     const separators = container.querySelectorAll('.bg-separator');
     expect(separators.length).toBe(1);
   });
 
   it('does not render separator after last repository', () => {
-    const { container } = render(
-      <RepositoryList repositories={[mockRepository]} />
-    );
+    const { container } = render(<RepositoryList repositories={[mockRepository]} />);
     const separators = container.querySelectorAll('.bg-separator');
     expect(separators.length).toBe(0);
   });

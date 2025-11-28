@@ -19,7 +19,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="flex items-center justify-center w-8 h-8 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="flex h-8 w-8 items-center justify-center rounded transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         aria-label="Previous page"
       >
         <Icon icon="mdi:chevron-left" width={20} height={20} />
@@ -41,14 +41,9 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
           <button
             key={pageNum}
             onClick={() => onPageChange(pageNum)}
-            className={`
-              flex items-center justify-center w-8 h-8 rounded font-medium text-sm transition-colors
-              ${
-                isActive
-                  ? 'bg-blue-600 text-white'
-                  : 'hover:bg-gray-100 text-gray-700'
-              }
-            `}
+            className={`flex h-8 w-8 items-center justify-center rounded text-sm font-medium transition-colors ${
+              isActive ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100'
+            } `}
             aria-label={`Page ${pageNum}`}
             aria-current={isActive ? 'page' : undefined}
           >
@@ -60,7 +55,7 @@ export function Pagination({ currentPage, totalPages, onPageChange }: Pagination
       <button
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="flex items-center justify-center w-8 h-8 rounded hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+        className="flex h-8 w-8 items-center justify-center rounded transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
         aria-label="Next page"
       >
         <Icon icon="mdi:chevron-right" width={20} height={20} />

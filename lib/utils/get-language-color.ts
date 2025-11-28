@@ -58,4 +58,3 @@ export function getLanguageColor(language: string | null): string | null {
   if (!language) return null;
   return GITHUB_LANGUAGE_COLORS[language] || null;
 }
-

@@ -4,10 +4,7 @@
  * @param totalPages - Total number of pages
  * @returns Array of page numbers and ellipsis markers
  */
-export function getPaginationPages(
-  currentPage: number,
-  totalPages: number
-): (number | string)[] {
+export function getPaginationPages(currentPage: number, totalPages: number): (number | string)[] {
   const pages: (number | string)[] = [];
   const showEllipsis = totalPages > 7;
 
@@ -54,11 +51,7 @@ export function getPaginationPages(
  * @param currentPage - Current page number (1-indexed)
  * @returns Pagination metadata including total pages, start/end indices
  */
-export function calculatePagination(
-  totalItems: number,
-  itemsPerPage: number,
-  currentPage: number
-) {
+export function calculatePagination(totalItems: number, itemsPerPage: number, currentPage: number) {
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;

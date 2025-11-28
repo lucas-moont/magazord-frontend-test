@@ -16,7 +16,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantStyles: Record<ButtonVariant, string> = {
   primary: 'bg-gradient-to-r from-[#0561b5] to-[#077cee] text-white hover:opacity-90',
   secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
-  outline: 'border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800',
+  outline:
+    'border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800',
   ghost: 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800',
 };
 
@@ -43,7 +44,7 @@ export function Button({
         variantStyles[variant],
         sizeStyles[size],
         fullWidth && 'w-full justify-center',
-        className
+        className,
       )}
       {...props}
     >

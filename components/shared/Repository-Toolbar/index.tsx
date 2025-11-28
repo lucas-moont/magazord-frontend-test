@@ -42,11 +42,11 @@ export function RepositoryToolbar({
   className,
 }: RepositoryToolbarProps) {
   return (
-    <div 
+    <div
       className={cn(
-        "flex flex-row md:flex-col lg:flex-row gap-4 md:gap-6",
-        "bg-gray-bg md:bg-transparent rounded-lg p-4 md:p-0",
-        className
+        'flex flex-row gap-4 md:flex-col md:gap-6 lg:flex-row',
+        'bg-gray-bg rounded-lg p-4 md:bg-transparent md:p-0',
+        className,
       )}
     >
       {showFilters && (
@@ -71,7 +71,7 @@ export function RepositoryToolbar({
         </div>
       )}
 
-      <div className="flex-1 w-full lg:order-first">
+      <div className="w-full flex-1 lg:order-first">
         <SearchBar
           value={searchQuery}
           onChange={onSearchChange}

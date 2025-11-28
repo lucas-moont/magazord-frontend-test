@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   :root {
@@ -22,28 +22,29 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
-    
+
     /* Custom grays from Figma */
     --gray-950: 210 11% 15%;
     --gray-c5: 0 0% 86%;
     --gray-bg: 0 0% 97.25%;
     --gray-c3: 0 0% 60%;
-    
+
     /* Design System Colors */
     --link-color: 210 100% 51%;
     --tab-active-border: 12 95% 66%;
     --separator: 0 0% 96%;
-    --additional-info-bg: #F8F8F8;
+    --additional-info-bg: #f8f8f8;
     --dropdown-bg: #ffffff;
     --dropdown-border: #e5e7eb;
     --dropdown-hover: #f3f4f6;
-    --close-button-color: #FE354D;
+    --close-button-color: #fe354d;
     --tab-inactive-text: #999999;
     --tab-inactive-hover-text: #000000;
     --tab-inactive-hover-border: #d1d5db;
   }
 
-  html.dark, .dark {
+  html.dark,
+  .dark {
     /* Dark Mode - HSL values without hsl() */
     --background: 0 0% 9%;
     --foreground: 0 0% 98%;
@@ -64,13 +65,13 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
-    
+
     /* Custom grays for dark mode */
     --gray-950: 0 0% 98%;
     --gray-c5: 0 0% 40%;
     --gray-bg: 0 0% 22%;
     --gray-c3: 0 0% 70%;
-    
+
     /* Design System Colors - Dark Mode */
     --link-color: 210 100% 60%;
     --tab-active-border: 12 95% 70%;
@@ -79,7 +80,7 @@
     --dropdown-bg: #1f2937;
     --dropdown-border: #374151;
     --dropdown-hover: #374151;
-    --close-button-color: #FE354D;
+    --close-button-color: #fe354d;
     --tab-inactive-text: #9ca3af;
     --tab-inactive-hover-text: #d1d5db;
     --tab-inactive-hover-border: #4b5563;
@@ -91,7 +92,9 @@
 
   body {
     @apply text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 

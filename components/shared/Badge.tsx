@@ -9,8 +9,8 @@ export function Badge({ content, className }: BadgeProps) {
   return (
     <span
       className={cn(
-        "ml-1 px-3 py-1 bg-gray-bg border border-solid border-gray-c5 text-gray-c3 rounded-full text-sm font-medium",
-        className
+        'bg-gray-bg border-gray-c5 text-gray-c3 ml-1 rounded-full border border-solid px-3 py-1 text-sm font-medium',
+        className,
       )}
     >
       {content}

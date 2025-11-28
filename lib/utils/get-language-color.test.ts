@@ -42,4 +42,3 @@ describe('getLanguageColor', () => {
     expect(getLanguageColor('Markdown')).toBe('#083fa1');
   });
 });
-

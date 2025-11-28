@@ -7,7 +7,7 @@ import { DomainError } from '@/domain/errors';
 
 export async function fetchRepositories(
   filters: RepositoryFilters,
-  httpClient: AxiosInstance
+  httpClient: AxiosInstance,
 ): Promise<GitHubRepositoryDTO[]> {
   try {
     const params: Record<string, string | number> = {

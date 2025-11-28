@@ -7,7 +7,7 @@ import { DomainError } from '@/domain/errors';
 
 export async function searchRepositories(
   filters: SearchRepositoryFilters,
-  httpClient: AxiosInstance
+  httpClient: AxiosInstance,
 ): Promise<GitHubRepositoryDTO[]> {
   try {
     const queryParts = [`user:${GITHUB_USERNAME}`, filters.query];

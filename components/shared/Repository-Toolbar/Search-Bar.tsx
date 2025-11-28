@@ -10,12 +10,7 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-export function SearchBar({
-  value,
-  onChange,
-  onSearch,
-  placeholder = 'Search Here',
-}: SearchBarProps) {
+export function SearchBar({ value, onChange, onSearch, placeholder = 'Search Here' }: SearchBarProps) {
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       onSearch(value);
@@ -24,14 +19,19 @@ export function SearchBar({
 
   return (
     <div className="relative flex items-center">
-      <Icon icon="mdi:magnify" width={24} height={24} className="absolute right-0 md:right-auto md:left-0 text-gray-c3" />
+      <Icon
+        icon="mdi:magnify"
+        width={24}
+        height={24}
+        className="text-gray-c3 absolute right-0 md:right-auto md:left-0"
+      />
       <input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
-        className="w-full pr-10 md:pr-0 md:pl-10 py-2 bg-transparent text-gray-900 placeholder:text-gray-c3 text-sm md:text-lg border-b border-separator md:border-separator focus:outline-none focus:border-gray-400 transition-colors dark:text-foreground dark:placeholder:text-gray-c3"
+        className="placeholder:text-gray-c3 border-separator md:border-separator dark:text-foreground dark:placeholder:text-gray-c3 w-full border-b bg-transparent py-2 pr-10 text-sm text-gray-900 transition-colors focus:border-gray-400 focus:outline-none md:pr-0 md:pl-10 md:text-lg"
       />
     </div>
   );

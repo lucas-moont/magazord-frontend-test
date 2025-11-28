@@ -7,7 +7,7 @@ describe('DropdownMenu', () => {
     render(
       <DropdownMenu isOpen={false}>
         <div>Content</div>
-      </DropdownMenu>
+      </DropdownMenu>,
     );
     expect(screen.queryByText('Content')).not.toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe('DropdownMenu', () => {
     render(
       <DropdownMenu isOpen={true}>
         <div>Content</div>
-      </DropdownMenu>
+      </DropdownMenu>,
     );
     // Component renders twice: once for desktop, once for mobile
     const contentElements = screen.getAllByText('Content');
@@ -28,7 +28,7 @@ describe('DropdownMenu', () => {
     render(
       <DropdownMenu isOpen={true} title="Menu Title" onClose={handleClose}>
         <div>Content</div>
-      </DropdownMenu>
+      </DropdownMenu>,
     );
 
     expect(screen.getByText('Menu Title')).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe('DropdownMenu', () => {
     const { container } = render(
       <DropdownMenu isOpen={true} position="left">
         <div>Content</div>
-      </DropdownMenu>
+      </DropdownMenu>,
     );
     // The desktop container is the first div
     const desktopContainer = container.querySelector('.absolute');

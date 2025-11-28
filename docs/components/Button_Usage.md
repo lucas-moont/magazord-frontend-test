@@ -39,7 +39,7 @@ import { ChevronIcon } from '@/components/shared/ChevronIcon';
 </Button>
 
 // Com ícone SVG customizado
-<Button 
+<Button
   icon={
     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -52,42 +52,38 @@ import { ChevronIcon } from '@/components/shared/ChevronIcon';
 
 ## Props
 
-| Prop | Type | Default | Descrição |
-|------|------|---------|-----------|
-| `children` | `ReactNode` | - | Conteúdo do botão (obrigatório) |
-| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost'` | `'primary'` | Estilo visual do botão |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamanho do botão |
-| `icon` | `ReactNode` | - | Ícone a ser exibido |
-| `iconPosition` | `'left' \| 'right'` | `'right'` | Posição do ícone |
-| `fullWidth` | `boolean` | `false` | Se o botão deve ocupar toda a largura disponível |
-| `className` | `string` | - | Classes CSS adicionais |
+| Prop           | Type                                               | Default     | Descrição                                        |
+| -------------- | -------------------------------------------------- | ----------- | ------------------------------------------------ |
+| `children`     | `ReactNode`                                        | -           | Conteúdo do botão (obrigatório)                  |
+| `variant`      | `'primary' \| 'secondary' \| 'outline' \| 'ghost'` | `'primary'` | Estilo visual do botão                           |
+| `size`         | `'sm' \| 'md' \| 'lg'`                             | `'md'`      | Tamanho do botão                                 |
+| `icon`         | `ReactNode`                                        | -           | Ícone a ser exibido                              |
+| `iconPosition` | `'left' \| 'right'`                                | `'right'`   | Posição do ícone                                 |
+| `fullWidth`    | `boolean`                                          | `false`     | Se o botão deve ocupar toda a largura disponível |
+| `className`    | `string`                                           | -           | Classes CSS adicionais                           |
 
 Além disso, aceita todas as props nativas de `HTMLButtonElement` como `onClick`, `disabled`, `type`, etc.
 
 ## Exemplos de Uso Real
 
 ### Dropdown Button
+
 ```tsx
-<Button 
-  onClick={() => setIsOpen(!isOpen)}
-  icon={<ChevronIcon isOpen={isOpen} />}
->
+<Button onClick={() => setIsOpen(!isOpen)} icon={<ChevronIcon isOpen={isOpen} />}>
   Filter Options
 </Button>
 ```
 
 ### Action Button
+
 ```tsx
-<Button 
-  variant="secondary"
-  size="sm"
-  onClick={handleSave}
->
+<Button variant="secondary" size="sm" onClick={handleSave}>
   Save Changes
 </Button>
 ```
 
 ### Full Width Button
+
 ```tsx
 <Button fullWidth variant="primary">
   Submit Form

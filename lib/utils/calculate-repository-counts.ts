@@ -14,18 +14,12 @@ export function calculateRepositoryCounts({
   totalStarred,
 }: CalculateRepositoryCountsParams) {
   const repositoriesCount =
-    activeTab === 'repositories'
-      ? displayedRepositories.length
-      : totalRepositories?.length || 0;
+    activeTab === 'repositories' ? displayedRepositories.length : totalRepositories?.length || 0;
 
-  const starredCount =
-    activeTab === 'starred'
-      ? displayedRepositories.length
-      : totalStarred?.length || 0;
+  const starredCount = activeTab === 'starred' ? displayedRepositories.length : totalStarred?.length || 0;
 
   return {
     repositoriesCount,
     starredCount,
   };
 }
-

@@ -10,12 +10,10 @@ interface RepositoryFiltersState {
   resetFilters: () => void;
 }
 
-export const useRepositoryFiltersStore = create<RepositoryFiltersState>(
-  (set) => ({
-    type: ['all'],
-    language: ['all'],
-    setType: (type) => set({ type }),
-    setLanguage: (language) => set({ language }),
-    resetFilters: () => set({ type: ['all'], language: ['all'] }),
-  })
-);
+export const useRepositoryFiltersStore = create<RepositoryFiltersState>((set) => ({
+  type: ['all'],
+  language: ['all'],
+  setType: (type) => set({ type }),
+  setLanguage: (language) => set({ language }),
+  resetFilters: () => set({ type: ['all'], language: ['all'] }),
+}));

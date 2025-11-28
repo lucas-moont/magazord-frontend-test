@@ -30,26 +30,25 @@ export function AdditionalInfo({
       {collapsibleOnMobile && (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex flex-col items-center gap-1 text-link-color mb-4"
+          className="text-link-color mb-4 flex flex-col items-center gap-1 md:hidden"
         >
           <span className="text-sm">{displayTitle}</span>
           <Icon
             icon="mdi:chevron-down"
-            className={cn(
-              "w-6 h-6 transition-transform duration-200",
-              isOpen && "rotate-180"
-            )}
+            className={cn('h-6 w-6 transition-transform duration-200', isOpen && 'rotate-180')}
           />
         </button>
       )}
 
       <div
         className={cn(
-          "flex flex-col gap-2 items-start w-full max-w-xs text-sm",
-          collapsibleOnMobile && !isOpen && "hidden md:flex",
-          collapsibleOnMobile && isOpen && "md:flex rounded-lg p-4 md:rounded-none md:p-0 md:bg-transparent bg-additional-info-bg",
-          !collapsibleOnMobile && "flex",
-          className
+          'flex w-full max-w-xs flex-col items-start gap-2 text-sm',
+          collapsibleOnMobile && !isOpen && 'hidden md:flex',
+          collapsibleOnMobile &&
+            isOpen &&
+            'bg-additional-info-bg rounded-lg p-4 md:flex md:rounded-none md:bg-transparent md:p-0',
+          !collapsibleOnMobile && 'flex',
+          className,
         )}
       >
         {children}
@@ -57,4 +56,3 @@ export function AdditionalInfo({
     </>
   );
 }
-

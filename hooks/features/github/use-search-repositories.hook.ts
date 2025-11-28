@@ -20,7 +20,7 @@ interface UseSearchRepositoriesReturn {
 
 export function useSearchRepositories(
   filters: SearchRepositoryFilters,
-  options?: UseSearchRepositoriesOptions
+  options?: UseSearchRepositoriesOptions,
 ): UseSearchRepositoriesReturn {
   const { enabled = true } = options || {};
 

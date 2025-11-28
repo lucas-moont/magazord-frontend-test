@@ -12,11 +12,7 @@ export function RepositoryList({ repositories }: RepositoryListProps) {
   const t = useTranslations('profile');
 
   if (repositories.length === 0) {
-    return (
-      <div className="text-center py-12 text-gray-500">
-        {t('search.noResults')}
-      </div>
-    );
+    return <div className="py-12 text-center text-gray-500">{t('search.noResults')}</div>;
   }
 
   return (
@@ -24,9 +20,7 @@ export function RepositoryList({ repositories }: RepositoryListProps) {
       {repositories.map((repository, index) => (
         <div key={repository.id}>
           <RepositoryCard repository={repository} />
-          {index < repositories.length - 1 && (
-            <div className="h-px bg-separator my-6 sm:my-8" />
-          )}
+          {index < repositories.length - 1 && <div className="bg-separator my-6 h-px sm:my-8" />}
         </div>
       ))}
     </div>

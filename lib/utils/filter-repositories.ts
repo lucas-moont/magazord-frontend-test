@@ -1,9 +1,6 @@
 import type { Repository, RepositoryFilters } from '@/@types/github';
 
-export function filterRepositories(
-  repositories: Repository[],
-  filters: RepositoryFilters
-): Repository[] {
+export function filterRepositories(repositories: Repository[], filters: RepositoryFilters): Repository[] {
   let filteredRepos = [...repositories];
 
   // Apply custom type filters
@@ -30,9 +27,7 @@ export function filterRepositories(
   if (filters.language && filters.language.length > 0 && !filters.language.includes('all')) {
     filteredRepos = filteredRepos.filter((repo) => {
       if (!repo.language) return false;
-      return filters.language!.some(
-        (lang) => lang.toLowerCase() === repo.language!.toLowerCase()
-      );
+      return filters.language!.some((lang) => lang.toLowerCase() === repo.language!.toLowerCase());
     });
   }
 

@@ -11,9 +11,7 @@ vi.mock('next-intl', () => ({
 // Mock next/image
 /* eslint-disable @next/next/no-img-element */
 vi.mock('next/image', () => ({
-  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => (
-    <img src={src} alt={alt} {...props} />
-  ),
+  default: ({ src, alt, ...props }: React.ComponentProps<'img'>) => <img src={src} alt={alt} {...props} />,
 }));
 
 // Mock ThemeSwitch

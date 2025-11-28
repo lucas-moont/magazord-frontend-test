@@ -15,33 +15,26 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
   return (
     <div>
       <div className="mb-2 text-lg">
-        <span className="font-light text-black dark:text-foreground">{owner}</span>
-        <span className="text-black dark:text-foreground mx-1">/</span>
+        <span className="dark:text-foreground font-light text-black">{owner}</span>
+        <span className="dark:text-foreground mx-1 text-black">/</span>
         <a
           href={repository.htmlUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-link-color hover:underline"
+          className="text-link-color font-semibold hover:underline"
         >
           {repoName}
         </a>
       </div>
 
       {repository.description && (
-        <p className="text-sm text-gray-c3 dark:text-muted-foreground mb-3 max-w-3xl">
-          {repository.description}
-        </p>
+        <p className="text-gray-c3 dark:text-muted-foreground mb-3 max-w-3xl text-sm">{repository.description}</p>
       )}
 
-      <div className="flex flex-wrap items-center gap-8 text-sm text-black dark:text-foreground">
+      <div className="dark:text-foreground flex flex-wrap items-center gap-8 text-sm text-black">
         {repository.language && (
           <div className="flex items-center gap-1.5">
-            {languageColor && (
-              <span
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: languageColor }}
-              ></span>
-            )}
+            {languageColor && <span className="h-3 w-3 rounded-full" style={{ backgroundColor: languageColor }}></span>}
             <span>{repository.language}</span>
           </div>
         )}
@@ -58,11 +51,11 @@ export function RepositoryCard({ repository }: RepositoryCardProps) {
       </div>
 
       {repository.topics.length > 0 && (
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="mt-3 flex flex-wrap gap-2">
           {repository.topics.slice(0, 5).map((topic: string) => (
             <span
               key={topic}
-              className="px-2.5 py-0.5 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full"
+              className="rounded-full bg-blue-50 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
             >
               {topic}
             </span>

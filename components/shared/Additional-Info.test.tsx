@@ -12,7 +12,7 @@ describe('AdditionalInfo', () => {
     render(
       <AdditionalInfo>
         <div>Content</div>
-      </AdditionalInfo>
+      </AdditionalInfo>,
     );
     expect(screen.getByText('Content')).toBeInTheDocument();
   });
@@ -21,7 +21,7 @@ describe('AdditionalInfo', () => {
     render(
       <AdditionalInfo>
         <div>Content</div>
-      </AdditionalInfo>
+      </AdditionalInfo>,
     );
     // Since we mock useTranslations to return the key
     expect(screen.getByText('additionalInfo')).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe('AdditionalInfo', () => {
     render(
       <AdditionalInfo title="Custom Title">
         <div>Content</div>
-      </AdditionalInfo>
+      </AdditionalInfo>,
     );
     expect(screen.getByText('Custom Title')).toBeInTheDocument();
   });
@@ -40,7 +40,7 @@ describe('AdditionalInfo', () => {
     render(
       <AdditionalInfo collapsibleOnMobile={true}>
         <div data-testid="content">Content</div>
-      </AdditionalInfo>
+      </AdditionalInfo>,
     );
 
     const button = screen.getByRole('button');

@@ -70,10 +70,7 @@ describe('extractAvailableLanguages', () => {
   });
 
   it('should return empty array when all repositories have null language', () => {
-    const repos = [
-      createRepo({ language: null }),
-      createRepo({ language: null }),
-    ];
+    const repos = [createRepo({ language: null }), createRepo({ language: null })];
 
     const result = extractAvailableLanguages(repos);
     expect(result).toEqual([]);
@@ -97,4 +94,3 @@ describe('extractAvailableLanguages', () => {
     ]);
   });
 });
-
