@@ -117,7 +117,7 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="dark:bg-background min-h-screen bg-white pb-16 md:pb-0">
+    <div className="dark:bg-background min-h-screen bg-white md:pb-0">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-7 md:gap-8 lg:grid-cols-4 lg:gap-12 xl:gap-16">
           <aside className="md:col-span-2 lg:col-span-1">
