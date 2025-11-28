@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        '@': '.',
+      },
+    },
+  },
 };
 
 export default withNextIntl(nextConfig);

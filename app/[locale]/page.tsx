@@ -8,9 +8,9 @@ import { useSearchRepositories } from '@/hooks/features/github/use-search-reposi
 import { useProfileView } from '@/hooks/features/profile/use-profile-view.hook';
 import { useRepositoryFilters } from '@/hooks/features/repositories/use-repository-filters.hook';
 import { UserProfile } from '@/components/shared/User-Profile';
-import { ProfileTabs } from '@/components/shared/Profile-Tabs';
-import { RepositoryToolbar } from '@/components/shared/Repository-Toolbar';
-import { RepositoryList } from '@/components/shared/Repository-List';
+import { ProfileTabs } from '@/components/shared/ProfileTabs';
+import { RepositoryToolbar } from '@/components/shared/RepositoryToolbar';
+import { RepositoryList } from '@/components/shared/RepositoryList';
 import { useTranslations } from 'next-intl';
 import type { RepositoryFilters } from '@/@types/github';
 import { filterRepositories } from '@/lib/utils/filter-repositories';

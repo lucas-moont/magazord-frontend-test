@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils/cn';
 import { Button } from '@/components/shared/Button';
 import { ChevronIcon } from '@/components/shared/ChevronIcon';
-import { DropdownMenu } from '@/components/shared/Dropdown-Menu';
-import { DropdownMenuItem } from '@/components/shared/Dropdown-Menu/DropdownMenuItem';
+import { DropdownMenu } from '@/components/shared/DropdownMenu';
+import { DropdownMenuItem } from '@/components/shared/DropdownMenu/DropdownMenuItem';
 
 interface FilterOption {
   value: string;
