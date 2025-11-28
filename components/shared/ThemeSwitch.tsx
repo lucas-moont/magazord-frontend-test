@@ -13,7 +13,7 @@ interface ThemeSwitchProps {
 
 export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     startTransition(() => {
@@ -35,7 +35,7 @@ export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
     );
   }
 
-  const isDark = theme === 'dark';
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <button
