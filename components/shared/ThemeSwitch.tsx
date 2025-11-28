@@ -13,7 +13,7 @@ interface ThemeSwitchProps {
 
 export function ThemeSwitch({ floating = false, className }: ThemeSwitchProps) {
   const [mounted, setMounted] = useState(false);
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     startTransition(() => {
