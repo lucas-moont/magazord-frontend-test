@@ -18,7 +18,7 @@ const [filter, setFilter] = useState(['all']);
     { value: 'archived', label: 'Archived' },
   ]}
   onChange={setFilter}
-/>
+/>;
 ```
 
 ## Comportamento de Seleção
@@ -46,11 +46,13 @@ const [filter, setFilter] = useState(['all']);
 ## Comportamento Responsivo
 
 ### Desktop/Tablet
+
 - Dropdown tradicional posicionado abaixo do botão
 - Overlay escuro ao clicar
 - Fecha ao clicar fora ou em uma opção
 
 ### Mobile
+
 - Modal fullscreen com header e botão de fechar
 - Título exibido no header
 - Botão de fechar usa cor `--close-button-color` (#FE354D)
@@ -58,12 +60,12 @@ const [filter, setFilter] = useState(['all']);
 
 ## Props
 
-| Prop      | Type                              | Default | Descrição                                    |
-| --------- | --------------------------------- | ------- | -------------------------------------------- |
-| `label`   | `string`                          | -       | Label do botão (obrigatório)                 |
-| `value`   | `string[]`                        | `[]`    | Array de valores selecionados                |
-| `options` | `{ value: string; label: string }[]` | `[]` | Opções disponíveis para seleção              |
-| `onChange` | `(value: string[]) => void`   | -       | Callback chamado quando a seleção muda       |
+| Prop       | Type                                 | Default | Descrição                              |
+| ---------- | ------------------------------------ | ------- | -------------------------------------- |
+| `label`    | `string`                             | -       | Label do botão (obrigatório)           |
+| `value`    | `string[]`                           | `[]`    | Array de valores selecionados          |
+| `options`  | `{ value: string; label: string }[]` | `[]`    | Opções disponíveis para seleção        |
+| `onChange` | `(value: string[]) => void`          | -       | Callback chamado quando a seleção muda |
 
 ## Variáveis CSS Utilizadas
 
@@ -91,7 +93,7 @@ const [typeFilter, setTypeFilter] = useState(['all']);
     { value: 'mirrors', label: 'Mirrors' },
   ]}
   onChange={setTypeFilter}
-/>
+/>;
 ```
 
 ### Filtro de Linguagem
@@ -104,12 +106,7 @@ const languages = [
   { value: 'Python', label: 'Python' },
 ];
 
-<FilterDropdown
-  label="Language"
-  value={languageFilter}
-  options={languages}
-  onChange={setLanguageFilter}
-/>
+<FilterDropdown label="Language" value={languageFilter} options={languages} onChange={setLanguageFilter} />;
 ```
 
 ## Integração com RepositoryToolbar
@@ -129,4 +126,3 @@ O `FilterDropdown` é tipicamente usado dentro do `RepositoryToolbar`:
   languageOptions={languageOptions}
 />
 ```
-

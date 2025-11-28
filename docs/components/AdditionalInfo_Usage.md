@@ -10,17 +10,19 @@ import { AdditionalInfo } from '@/components/shared/Additional-Info';
 <AdditionalInfo>
   <div>Informação adicional 1</div>
   <div>Informação adicional 2</div>
-</AdditionalInfo>
+</AdditionalInfo>;
 ```
 
 ## Comportamento Responsivo
 
 ### Desktop/Tablet
+
 - Sempre visível e expandido
 - Sem botão de toggle
 - Sem background especial
 
 ### Mobile
+
 - Inicialmente oculto (colapsado)
 - Botão de toggle com chevron animado
 - Ao expandir, mostra background `--additional-info-bg`
@@ -28,13 +30,13 @@ import { AdditionalInfo } from '@/components/shared/Additional-Info';
 
 ## Props
 
-| Prop                  | Type      | Default | Descrição                                                      |
-| --------------------- | --------- | ------- | -------------------------------------------------------------- |
-| `children`            | `ReactNode` | -       | Conteúdo a ser exibido (obrigatório)                           |
-| `title`               | `string`  | -       | Título do botão de toggle (usa tradução se não fornecido)      |
-| `defaultOpen`         | `boolean` | `false` | Se o componente deve iniciar expandido no mobile          |
-| `collapsibleOnMobile`  | `boolean` | `true`  | Se o componente deve ser colapsável no mobile                  |
-| `className`           | `string`  | -       | Classes CSS adicionais                                          |
+| Prop                  | Type        | Default | Descrição                                                 |
+| --------------------- | ----------- | ------- | --------------------------------------------------------- |
+| `children`            | `ReactNode` | -       | Conteúdo a ser exibido (obrigatório)                      |
+| `title`               | `string`    | -       | Título do botão de toggle (usa tradução se não fornecido) |
+| `defaultOpen`         | `boolean`   | `false` | Se o componente deve iniciar expandido no mobile          |
+| `collapsibleOnMobile` | `boolean`   | `true`  | Se o componente deve ser colapsável no mobile             |
+| `className`           | `string`    | -       | Classes CSS adicionais                                    |
 
 ## Variáveis CSS Utilizadas
 
@@ -92,4 +94,3 @@ import { AdditionalInfo } from '@/components/shared/Additional-Info';
   <div>Conteúdo que inicia expandido</div>
 </AdditionalInfo>
 ```
-

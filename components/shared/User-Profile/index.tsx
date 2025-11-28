@@ -21,6 +21,11 @@ export function UserProfile({ user }: UserProfileProps) {
           className="h-[104px] w-[104px] rounded-[50%] object-cover md:h-[104px] md:w-[104px] lg:h-[150px] lg:w-[150px]"
           priority
         />
+        {/* 
+          User status (available, busy, etc.) 
+          is only available via authenticated API or GraphQL. 
+          I opted to use a static placeholder.
+        */}
         <div className="absolute right-0 bottom-0 flex h-[27px] w-[27px] items-center justify-center rounded-full border-4 border-white bg-white shadow-md md:right-0 md:bottom-0 md:h-[27px] md:w-[27px] lg:right-2 lg:bottom-2 lg:h-10 lg:w-10">
           <span className="text-[12px] md:text-[12px] lg:text-lg">😎</span>
         </div>
